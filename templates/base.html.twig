@@ -19,7 +19,6 @@
     {{'Estas logeado como '}}{{ app.user.email}}
     {% endif %}
 
-    <a href="/{{app.user ? 'logout' : 'login'}}">{{app.user ? 'Logout' : 'Login'}}</a>
         {% block body %}
         {% endblock %}
     </body>
