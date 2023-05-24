@@ -6,6 +6,12 @@ controllers:
 home:
     path: /home
     controller: App\Controller\HomeController::homepage
+quienesSomos:
+    path: /quienesSomos
+    controller: App\Controller\HomeController::quienesSomos
+actividades:
+    path: /actividades
+    controller: App\Controller\HomeController::actividades
 login:
     path: /login
     controller: App\Controller\SecurityController::login
@@ -27,6 +33,12 @@ user_dashboard:
 admin_dashboard:
     path: /admin/admin_dashboard
     controller: App\Controller\AdminController::adminDashboard
+
+_annotations:
+    resource: '../src/Controller/'
+    type: annotation
+    prefix: '/'
+
 
 
 

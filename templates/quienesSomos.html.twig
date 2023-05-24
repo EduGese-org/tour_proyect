@@ -1,0 +1,25 @@
+{# templates/homepage.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+    {% block navbar %}
+        {% include "nav_bar.html.twig" %}
+    {% endblock %}
+    {% block content %}
+
+    {# <h3>Accede a tu cuenta de usuario o administrador</h3>
+     <a href="{{path('login')}}">Login</a>
+     <br><br><br>
+
+
+
+     
+     Aun no tienes cuenta con nosotros?Registrate!<br><br>
+     Como usuario--><a href="{{path('user_register')}}">Usuarios</a><br><br>
+     Como admin--><a href="{{path('adm_register')}}">Administradores</a> #}
+   
+{% endblock %}
+
+    {% block footer %}
+        {% include "footer.html.twig" %}
+    {% endblock %}

@@ -7,19 +7,30 @@
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
-        {% endblock %}
-
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
+            <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
         {% endblock %}
     </head>
     <body>
-    
-    {% if (app.user) %}
-    {{'Estas logeado como '}}{{ app.user.email}}
-    {% endif %}
+        {% block navbar %}
+        {% endblock %}
 
-        {% block body %}
+            {% if (app.user) %}
+                {{'Estas logeado como '}}{{ app.user.email}}
+            {% endif %}
+                  <a href="/{{ app.user ? 'logout' : 'login' }}">{{ app.user ? 'Logout' : 'Login' }}</a>
+
+
+        {% block content %}
+        {% endblock %}
+
+        {% block footer %}
+        {% endblock %}
+
+         {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+            <script src="{{ asset('bootstrap/js/jquery-3.2.1.min.js') }}"></script>
+            <script src="{{ asset('bootstrap/js/jquery-3.2.1.js') }}"></script>
+            <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         {% endblock %}
     </body>
 </html>
