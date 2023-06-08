@@ -2,21 +2,28 @@
 
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <style>
+	<link href="{{ asset('css/homepage.css') }}" type="text/css" rel="stylesheet"/>
+	<link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+	</style>
+{% endblock %}
+
 {% block body %}
+<body class="incuerpo">
+	{# <h3>Accede a tu cuenta de usuario o administrador</h3>
+	     <a href="{{path('login')}}">Login</a>
+	     <br><br><br> #}
 
 
-    
-    {# <h3>Accede a tu cuenta de usuario o administrador</h3>
-     <a href="{{path('login')}}">Login</a>
-     <br><br><br> #}
+	Aun no tienes cuenta con nosotros?Registrate!<br><br>
+	Como usuario--><a href="{{path('user_register')}}">Usuarios</a><br><br>
+	Como admin--><a href="{{path('adm_register')}}">Administradores</a>
+    <div class="prueba">
+    <p>Work please</p>
+    </div>
+</body>
 
-
-
-     
-     Aun no tienes cuenta con nosotros?Registrate!<br><br>
-     Como usuario--><a href="{{path('user_register')}}">Usuarios</a><br><br>
-     Como admin--><a href="{{path('adm_register')}}">Administradores</a>
-   
 
 
 

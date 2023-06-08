@@ -6,9 +6,7 @@ body{
 
 /* PARTE LOGIN MARIAM */
 
-html,body{
-  height: 150%;   
-}
+
 
 .logo{
     font-size: 4em;
@@ -21,7 +19,7 @@ body{
 
     background: rgb(197,235,135);
     background: linear-gradient(0deg, rgba(197,235,135,1) 19%, rgba(255,255,255,1) 100%);   
-    width: 100%; 
+  
     text-align: center;
 }
 
@@ -48,7 +46,7 @@ body{
     box-shadow:2px 2px 5px black;
 }
 
-div{
+.formul{
     margin-left:1.5em;
     margin-right:1.5em;
 }
@@ -118,6 +116,7 @@ margin-top: 0.1em;
 }
 .navbar{
   background-color: #343A40;
+  width: 100%;
 }
 .navbar-nav .nav-item .nav-link {
   position: relative;
@@ -287,4 +286,66 @@ form button[type="submit"] {
 .social-icons a {
   color: #333;
   font-size: 20px;
+}
+
+
+.carro{
+  padding: 0;
+  width: 100%;
+}
+.c-item{
+height:38.5em;
+}
+.c-img{
+height: 100%;
+object-fit: cover;
+filter: brightness(0.6);
+}
+.carousel-caption {
+  bottom: 5em;
+  margin-top:2em;
+}
+.carousel-caption p{
+  font-size: 2em;
+  text-transform: uppercase; 
+}
+.carousel-caption h1 {
+margin-top: 2em;
+margin-bottom: 2em;
+font-weight: bold;
+font-size: 4em;
+color: white;
+text-shadow: 2px 2px 3px rgb(61, 10, 10);
+text-transform: uppercase; 
+}
+.carousel-caption button{
+padding: 1em;
+background-color: #53a93f;
+padding-left: 3em;
+padding-right: 3em;
+font-size: 1.2em;
+font-family: Arial, Helvetica, sans-serif;
+box-shadow:  1px 1px 2px#333;
+border: 0;
+color: #333;
+font-weight: bold;
+text-transform: uppercase;
+}
+.carousel-caption button:hover{
+box-shadow: 2px 2px 9px #fff;
+background-color: #53a93f;
+}
+.div{
+  background-color: rgb(224, 223, 223);
+  padding:3em;
+}
+.iconos{
+  display: inline-block;
+
+}
+.icon{
+  width: 70%;
+}
+.texto{
+  margin-top: 1em;
 }

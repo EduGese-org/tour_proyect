@@ -1,7 +1,5 @@
 
-html,body{
-  height: 150%;   
-}
+
 
 .logo{
     font-size: 4em;
@@ -14,7 +12,7 @@ body{
 
     background: rgb(197,235,135);
     background: linear-gradient(0deg, rgba(197,235,135,1) 19%, rgba(255,255,255,1) 100%);   
-    width: 100%; 
+ 
     text-align: center;
 }
 
@@ -41,7 +39,7 @@ body{
     box-shadow:2px 2px 5px black;
 }
 
-div{
+.formul{
     margin-left:1.5em;
     margin-right:1.5em;
 }
@@ -94,8 +92,11 @@ margin-top: 0.1em;
 }
 
 .boton:hover{
-    
     border:0.1px solid #7AB800;  
     background-color: rgba(172, 255, 47, 0);
 }
 
+.carro{
+    padding: 0%;
+    width: 100%;
+}

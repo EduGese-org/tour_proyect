@@ -1,0 +1,14 @@
+body{
+background-color: yellow;
+    width: 100%; 
+    text-align: center;
+}
+.prueba{
+    background-color: rgba(0, 0, 255, 0.326);
+    background-image: url("img/madrid.jpg");
+}
+.incuerpo{
+    background-color: aqua;
+    background: url("images/madrid.jpg");
+    background-size: cover;
+}
