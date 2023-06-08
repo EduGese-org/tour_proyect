@@ -1,0 +1,20 @@
+body{
+    background-color: bisque;
+    background-image: url('images/6474bb8830ba9.JPG') ;
+    color: white;
+    background-size: cover;
+    image-rendering: auto;
+}
+nav{
+    border-bottom: 1px solid white;
+    color: white;
+}
+.navbar-nav .nav-item .nav-link {
+    position: relative;
+    text-decoration: none;
+    color:  #f9f2fd;
+    font-weight: bold;
+    margin:  2em;
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 1px 1px 2px black;
+  }
