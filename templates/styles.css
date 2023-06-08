@@ -354,11 +354,14 @@ background-color: #53a93f;
   background-color: rgb(224, 223, 223);
   padding:3em;
   box-shadow: 0px 7px 8px -1px rgba(0,0,0,0.75);
+  margin-top: 1em;
 
 }
 .iconos{
   display: inline-block;
-
+}
+.iconos:hover{
+  box-shadow: 0px 7px 8px -1px rgba(0,0,0,0.75);
 }
 .icon{
   width: 70%;
@@ -366,3 +369,21 @@ background-color: #53a93f;
 .texto{
   margin-top: 1em;
 }
+.reg{
+  font-weight: bold;
+  font-size: 5em;
+}
+.rg{
+  font-size: 3em;
+}
+.e-reg{
+font-size: 1.5em;
+color: #53a93f;
+font-weight: 400;
+margin-top: -1em;
+}
+.e-reg:hover{
+  font-size: 1.5em;
+  color: #53a93f;
+  font-weight: 400;
+  }
