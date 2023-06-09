@@ -49,6 +49,16 @@ delete_activity:
 create_activity:
     path: /admin/create_activity
     controller: App\Controller\ActivityController::createActivity
+show_activity_reviews:
+    path: /show_activity_reviews/{id}
+    controller: App\Controller\ActivityController::showActivityReviews
+print_activity_reviewForm:
+    path: /print_activity_reviewForm/{id}
+    controller: App\Controller\ActivityController::printActivityReviewForm
+add_activity_review:
+    path: /add_activity_review/{id}
+    controller: App\Controller\ActivityController::addActivityReview
+    methods: [POST]
 
 
 

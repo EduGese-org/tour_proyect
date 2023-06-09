@@ -39,7 +39,7 @@
 			{{ flashMessage}}
 		{% endfor %}
 
-		
+
 		<h2>Tus actividades</h2>
 		<table class="table-general">
 			<tr>
@@ -76,9 +76,13 @@
 				<th>
 					<button onclick="sortTable(10)">Paginaweb</button>
 				</th>
+				<th>
+					<button onclick="sortTable(11)">Estado</button>
+				</th>
 				<!-- Otros campos de actividad -->
 			</tr>
 			<tbody class="miTabla">
+			{% set localDatetime = date('now', 'Europe/Madrid') %}
 				{% for activity in userActivities %}
 					<tr>
 						<td>{{ activity.getActivityName() }}</td>
@@ -98,10 +102,34 @@
 						<td>
 							<a href="">{{ activity.getCompanyWebsite() }}</a>
 						</td>
+						{% if activity.getDate()|date('Y-m-d H:i:s')  < localDatetime|date('Y-m-d H:i:s') %}
+
+							<td>
+								Finalizada
+							</td>
+						{% else %}
+							<td>
+								Programada
+							</td>
+
+						{% endif %}
 						<td>
 							<a href="{{ path('show_joined_activity', { 'id': activity.idActivity }) }}">ver</a>
 
 						</td>
+						{% if activity.getDate()|date('Y-m-d H:i:s')  < "now"|date('Y-m-d H:i:s') %}
+							<td>
+								<a href="{{ path('show_activity_reviews', { 'id': activity.idActivity }) }}">comentarios</a>
+
+							</td>
+						{% endif %}
+						{% if activity.getDate()|date('Y-m-d H:i:s')  < localDatetime|date('Y-m-d H:i:s') %}
+
+							<td>
+								<a href="{{ path('print_activity_reviewForm', { 'id': activity.idActivity }) }}">comentar y puntuar</a>
+							</td>
+
+						{% endif %}
 					</tr>
 				{% endfor %}
 			</tbody>
