@@ -203,10 +203,7 @@ label {
   margin: auto;
 }
 
-img {
-  width: 100%;
-  margin: auto;
-}
+
 
 .act_cr {
   margin: auto;
@@ -565,7 +562,7 @@ form button[type="submit"] {
   color: black;
   text-align: justify;
   margin-right: 5em;
-  font-size: 1.5em;
+  font-size: 2em;
 }
 
 
@@ -842,6 +839,7 @@ background-color: #eeeded;
   border-radius: 10px;
   box-shadow: 20px 20px 30px rgba(0, 0, 0, .05);
 }
+
 /* Comentario  */
 .comment{
 background-color: #d8d9daee;
@@ -858,6 +856,7 @@ padding-top: 1em;
 .title {
   font-weight: 600;
   color: rgb(31 41 55);
+  border-bottom: 2px solid grey;
 }
 
 .description {
@@ -925,8 +924,11 @@ padding-top: 1em;
  display: inline-block; 
 }
 .actions div{
-  border-bottom:2px solid black ;
+  margin-top: 0.2em;
   width: 20%;
+}
+.actions p{
+  margin-top: 0.2em;
 }
 
 .accept:hover {
@@ -936,4 +938,32 @@ padding-top: 1em;
 .accept:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+
+.try{
+  background-color: white;
+margin-top: 3em;
+}
+.a-img{
+width: 50%;
+background-color: #e4cab2;
+box-shadow: -3px 0px 5px 0px rgba(0,0,0,0.75);
+}
+.a-img img{
+object-fit: cover;
+}
+.a-txt h1{
+margin-top: 1em;
+font-weight: bolder;
+font-size: 5em;
+}
+.a-txt p{
+font-size: 1em;
+margin-top: 0.7em;
+}
+.a-txt {
+
+}
+.aa-txt{
+  
 }

@@ -16,8 +16,8 @@
 			padding: 2px 6px;
 		}
 	</style>
-	<section class="sn col-lg-12 ml-0 mr-0">
-		<div class=" sobre col-lg-12 ">
+	<section class="sn row">
+		<div class=" sobre col-lg-11 mr-auto ml-auto ">
 			<div class=" txt-sn col-lg-12  col-md-12 ">
 				<h1>Sobre Nosotros</h1>
 				<p>En TourNow, nos apasiona brindar experiencias de viaje inolvidables a nuestros clientes. Somos una empresa dedicada a la gestión de tours que se especializa en ofrecer emocionantes aventuras y descubrimientos en destinos de toda España.</p>
@@ -28,19 +28,33 @@
 			</div>
 		</div>
 	</section>
-	<section class="sn  col-lg-12 mr-auto ml-auto" style="width: 100%;">
-  <div class="col-sm-6   col-md-6 col-xs-6" style="width: 100%;">
-    <div class="thumbnail w-100" style="border: none; background: white; display: flex;">
-      <div class="col-sm-6 col-md-6 col-xs-12" style="order: 2;">
-        <h1>¿Qué hace que Tournow sea único?</h1>
-        <p>En TourNow, te ofrecemos una amplia gama de destinos únicos para descubrir en España. Desde las vibrantes calles de Barcelona hasta los encantadores pueblos blancos de Andalucía, cada destino tiene su propia belleza y singularidad.</p>
-      </div>
-  
-      <div class="col-sm-6 col-md-6 col-xs-12 image-container" style="order: 1;">
-        <img src={{asset("assets/unico.png")}} style="height: 200px; width: 100%;"/>
-      </div>
-    </div>
-  </div>
-</section>
+
+	<div class=" try row">
+		<div class=" a-txt col-lg-4 mr-auto ml-auto d-block col-md-10">
+			<div class="">
+				<h1>¿Qué hace que Tournow sea único?</h1>
+				<p>En TourNow, te ofrecemos una amplia gama de destinos únicos para descubrir en España. Desde las vibrantes calles de Barcelona hasta los encantadores pueblos blancos de Andalucía, cada destino tiene su propia belleza y singularidad.</p>
+			</div>
+		</div>
+		<div class=" a-img col-lg-6 d-block w-100 col-md-12 d-block">
+		<img class="d-block w-100 " src={{asset("images/unico.png")}} alt="Imagen de nuestro logo ">
+		</div>
+	</div>
+
+
+	<div class=" try row">
+	
+		<div class=" a-img col-lg-6 d-block w-100 col-md-12 d-block">
+				<img class="d-block w-100 " src={{asset("images/unico.png")}} alt="Imagen de nuestro logo ">
+		</div>
+
+		<div class=" a-txt col-lg-4 mr-auto ml-auto d-block col-md-10">
+			<div class="">
+				<h1>¿Qué hace que Tournow sea único?</h1>
+				<p>En TourNow, te ofrecemos una amplia gama de destinos únicos para descubrir en España. Desde las vibrantes calles de Barcelona hasta los encantadores pueblos blancos de Andalucía, cada destino tiene su propia belleza y singularidad.</p>
+			</div>
+</div>
+		
+	</div>
 
 {% endblock %}
