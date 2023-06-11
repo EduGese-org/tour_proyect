@@ -16,6 +16,13 @@ use Symfony\Component\Security\Core\Security;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Service\ActivityService;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
+use Symfony\Component\Mailer\Transport;
+use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mailer\Exception;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Psr\Log\LoggerInterface;
 
 
 
@@ -36,11 +43,16 @@ class ActivityController extends AbstractController
 {
     private $entityManager;
     private $doctrine;
+    private $mailer;
+    private $logger;
 
-    public function __construct(ManagerRegistry $doctrine, EntityManagerInterface $entityManager)
+    public function __construct(ManagerRegistry $doctrine, EntityManagerInterface $entityManager, MailerInterface $mailer, LoggerInterface $logger)
     {
         $this->entityManager = $entityManager;
         $this->doctrine = $doctrine;
+        $this->logger = $logger;
+
+        $this->mailer = $mailer;
     }
 
     public function deleteActivity(Request $request, ActivityService $activityService, ManagerRegistry $doctrine, UserInterface $user, $id): Response
@@ -99,6 +111,87 @@ class ActivityController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+    public function editActivity(Request $request, EntityManagerInterface $entityManager, $id, Security $security, ManagerRegistry $doctrine): Response
+    {
+
+        // Obtén la actividad desde la base de datos
+        $activity = $entityManager->getRepository(Activity::class)->find($id);
+        // Crea el formulario de edición utilizando el formulario de creación reutilizado
+        $form = $this->createForm(CreateActivityFormType::class, $activity);
+        $form->handleRequest($request);
+
+        // Maneja la solicitud de edición
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Valida los datos del formulario y aplica los cambios a la actividad
+
+            // Guarda los cambios en la base de datos
+            $entityManager->flush();
+
+
+
+            //flash message
+
+            $this->addFlash('edit', '¡Actividad editada con éxito!, se han mandado email a los usuarios para advertirles ');
+
+            //envio de mails//
+
+
+            //Obtener mails de usuarios registrados en la actividad
+            $activityId = $activity->getIdActivity();
+            $conn = $entityManager->getConnection();
+
+
+            $query = "SELECT u.email FROM user_activity ua
+            INNER JOIN user u ON ua.user_id = u.id_user
+            WHERE ua.activity_id = :activity_id";
+
+            $params = [
+                'activity_id' => $activityId, // ID de la actividad deseada
+            ];
+            // Ejecutar la consulta
+            $statement = $conn->executeQuery($query, $params);
+
+            // Obtener los correos electrónicos
+            $emails = $statement->fetchAllAssociative();
+
+            $emailList = [];
+            foreach ($emails as $row) {
+                $emailList[] = $row['email'];
+            }
+
+            //Mandar mails
+            $user = $security->getUser();
+            $user_repo = $doctrine->getRepository(User::class);
+            $user_mail = $user_repo->find($user)->getEmail(); //mail del admin 
+
+            $email = (new Email())
+                ->from($user_mail)
+                ->priority(Email::PRIORITY_HIGH)
+                ->subject('Una actividad a la que te has unido ha cambiado')
+                ->text('Una actividad a la que te has unido ha cambiado, revisa tu cuenta');
+
+            foreach ($emailList as $recipientEmail) {
+                $email->to($recipientEmail);
+                $this->mailer->send($email);
+            }
+
+            
+
+
+            return $this->render('user/showActivity.html.twig', [
+                'activity' => $activity,
+                'id' => $activity->getIdActivity(),
+                'emails' => $emails,
+            ]);
+        }
+
+
+        return $this->render('edit_activity.html.twig', [
+            'form' => $form->createView(),
+            'activity' => $activity,
+        ]);
+    }
+
     public function showActivityReviews($id, ActivityService $activityService): response
     {
 
@@ -125,20 +218,20 @@ class ActivityController extends AbstractController
     {
 
         $idActivity = $request->attributes->get('id'); //idactivity
-        $scores = $request->attributes->get('scores');//Cantidad de puntuaciones de la actividad
-        $average_score = $request->attributes->get('average_score');//Media de puntuacion de la actividad
-        
-        $score = $request->request->get('score');//Puntuacion que da el usuario, se recibe desde el formulario
-        $review = $request->request->get('review');//Review que da el usuario, se recibe desde el formulario
-        
-        
+        $scores = $request->attributes->get('scores'); //Cantidad de puntuaciones de la actividad
+        $average_score = $request->attributes->get('average_score'); //Media de puntuacion de la actividad
+
+        $score = $request->request->get('score'); //Puntuacion que da el usuario, se recibe desde el formulario
+        $review = $request->request->get('review'); //Review que da el usuario, se recibe desde el formulario
+
+
 
         $user = $security->getUser();
         $user_repo = $doctrine->getRepository(User::class);
         $user_id = $user_repo->find($user)->getId(); //id del usuario 
 
         $activity_repo = $doctrine->getRepository(Activity::class);
-        $activity = $activity_repo->find($idActivity);//Actividad que estamos manejando
+        $activity = $activity_repo->find($idActivity); //Actividad que estamos manejando
 
         // Insertar o actualizar en la tabla user_activity
         $conn = $entityManager->getConnection();
@@ -154,11 +247,11 @@ class ActivityController extends AbstractController
         $conn->executeStatement($query, $params);
         ///////Logica para añadir puntuacion media a tabla activity
 
-        if ($scores==0) {
-           $activity->setScores(1);
-           $activity->setAverageScore($score);
-           $activity->addScore($score);
-           $entityManager->flush();
+        if ($scores == 0) {
+            $activity->setScores(1);
+            $activity->setAverageScore($score);
+            $activity->addScore($score);
+            $entityManager->flush();
         }
         // $scoreCounting = $activity->getScores();
         // $activity->setScores($scoreCounting+1);
@@ -166,17 +259,17 @@ class ActivityController extends AbstractController
         // $totalScore = array_sum($scoreList);
         // $newAverageScore = $totalScore/$scores;///ERROR -->Division by zero
         // $activity->setAverageScore($newAverageScore);
-        
 
 
 
 
-///Esto sobra:
+
+        ///Esto sobra:
         $idActivity = $request->attributes->get('id');
         $activity_repo = $doctrine->getRepository(Activity::class);
         $activity = $activity_repo->find($idActivity);
-///
-         return $this->render('activityReviewForm.html.twig', [
+        ///
+        return $this->render('activityReviewForm.html.twig', [
             'activity' => $activity,
             'scores' => $scores,
             'average_score' => $average_score
