@@ -48,7 +48,7 @@ body {
 }
 
 
-input {
+textarea, input,#create_activity_form_city{
   margin-bottom: 1em;
   display: block;
   width: 100%;
@@ -58,7 +58,7 @@ input {
   background-color: none;
 }
 
-input:hover {
+input:hover,textarea:hover {
   border: none;
   border: 0.1px solid green;
 }
@@ -290,8 +290,23 @@ form button[type="submit"] {
   display: inline-block;
   margin: auto;
   width: 50%;
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
+#clear{
+  background-color: #53a93f;
+  padding: 1em;
+  border-radius: 0.4em;
+  margin-top: 0.7em;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1em;
+  font-weight: bold;
+  color: #343A40;
+}
+#clear:hover{
+  background-color: #52a93f00;
 
+}
 #mapa {
   float: right;
 }
@@ -504,12 +519,13 @@ form button[type="submit"] {
 }
 
 /*Sobre Nostros*/
-.sn {}
+.sn{
+   display: flex;
+}
 
 .sn div {
-  display: inline-block;
+ 
   margin-right: 0;
-
 }
 
 .sobre {
@@ -545,7 +561,9 @@ form button[type="submit"] {
   margin-right: 5em;
   font-size: 1.5em;
 }
+ .sobre .highlight{
 
+ }
 
 .img-sn {
   width: 225px;
@@ -598,7 +616,15 @@ form button[type="submit"] {
   float: right;
   background-color: lightblue;
   z-index: 2;
+  border-radius: 0.6em;
 }
+.u-img{
+  height: 50%;
+}
+.u-img img{
+  object-fit: cover;
+}
+
 
 /* User y Admin Dashboard */
 
@@ -675,4 +701,123 @@ form button[type="submit"] {
 
 .frm{
   margin-left: 3em;
+background-color: #eeeded;
+  border: 2px solid sienna;
+ padding-bottom: 2em;
+}
+.frm label{
+  color: #343A40;
+  font-weight: bold;
+  
+}
+.cf-titulo{
+  color: #343A40;
+  font-weight: bolder;
+}
+#create_activity_form_date_date select{
+  border-radius: 0.2em;
+ border:2px solid green;
+
+}
+#create_activity_form_date_time select{
+  margin-top: 0.4em;
+  border:2px solid green;
+}
+#map{
+  border-radius:1em;
+}
+.cookieCard {
+  width: 500px;
+  height: 400px;
+  background: linear-gradient(to right,rgb(164, 95, 11),rgb(237, 188, 120));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.mapa1{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.cookieCard::before {
+  
+  width: 250px;
+  height: 250px;
+  content: "";
+  background: linear-gradient(to right,rgb(129, 255, 110),rgb(208, 195, 255));
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+  right: -8%;
+  top: -20%;
+}
+
+.cookieHeading {
+  font-size: 1.9em;
+  font-weight: 600;
+  color: rgb(241, 241, 241);
+  z-index: 2;
+}
+
+.cookieDescription {
+  font-size: 1.4em;
+  color: rgb(241, 241, 241);
+  z-index: 2;
+  margin: 3em;
+}
+
+.cookieDescription a {
+  color: rgb(241, 241, 241);
+}
+
+.acceptButton {
+  padding: 15px 50px;
+  background-color: #7b57ff;
+  transition-duration: .2s;
+  border: none;
+  color: rgb(241, 241, 241);
+  cursor: pointer;
+  font-weight: 600;
+  z-index: 2;
+}
+
+.acceptButton:hover {
+  background-color: #dfad50;
+  transition-duration: .2s;
+}
+
+.thumbnail {
+  border: none;
+  background: white;
+  display: flex;
+  width: 100%;
+}
+
+.image-container {
+  flex: 1;
+}
+
+.image-container img {
+  height: 200px;
+  width: 100%;
+}
+
+.text-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+@media (max-width: 767px) {
+  .col-xs-6 {
+    width: 100%;
+    float: none;
+  }
 }

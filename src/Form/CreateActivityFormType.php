@@ -84,7 +84,7 @@ class CreateActivityFormType extends AbstractType
                 ],
             ])
             ->add('image', FileType::class, [
-                'label' => 'Imagen (20 mb max)',
+                'label' => 'Imagen (20mb max)',
                 'mapped' => false,
                 'required' => false,
                 'constraints' => [
@@ -112,7 +112,7 @@ class CreateActivityFormType extends AbstractType
                 ],
             ])
             ->add('company_name', TextType::class, [
-                'label' => 'Nombre de tu empresa u organización',
+                'label' => 'Nombre de empresa',
                 'required' => true,
                 'attr' => [
                     'readonly' => true,

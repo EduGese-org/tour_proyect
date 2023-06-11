@@ -20,11 +20,12 @@ continuacion de la lista de actividades, pero al hacerlo solo extiende de base.h
 {% endblock %} #}
 {% block body %}
 
-
-	<div class="mapa col-lg-7 mr-7 ml-auto">
-	<div class="form frm col-lg-8">
+<section class="mapa1">
+	<div class="mapa col-lg-7 mr-7 ml-auto col-md-12">
+	
+	<div class=" frm col-lg-9 ml-auto">
+	<h1 class="cf-titulo">Crear Nueva Actividad</h1>
 		{{ form_start(form) }}
-
 		{{ form_row(form.activity_name) }}
 		{{ form_row(form.description) }}
 		{{ form_row(form.tickets) }}
@@ -46,11 +47,11 @@ continuacion de la lista de actividades, pero al hacerlo solo extiende de base.h
 		
 
 	</div>
-	<div class="mapa col-lg-5" id="mapa">
+	<div class="mapa col-lg-4 mr-auto ml-auto col-md-12" id="mapa" >
 		<div id="map" style="height: 500px; width: 100%;"></div>
-		<button type="button" id="clear">borrar seleccion</button> 
+		<button type="button" id="clear">Borrar Seleccion</button> 
 	</div>
-	
+	</section>
 	{# {% block javascripts %}
 		<script src="{{ asset('/scripts/mapa.js') }}">
 		</script>	
