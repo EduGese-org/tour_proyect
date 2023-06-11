@@ -21,7 +21,8 @@ continuacion de la lista de actividades, pero al hacerlo solo extiende de base.h
 {% block body %}
 
 
-	<div class="mapa">
+	<div class="mapa col-lg-7 mr-7 ml-auto">
+	<div class="form frm col-lg-8">
 		{{ form_start(form) }}
 
 		{{ form_row(form.activity_name) }}
@@ -41,11 +42,11 @@ continuacion de la lista de actividades, pero al hacerlo solo extiende de base.h
 
 		<button type="submit">Guardar</button>
 		{{ form_end(form) }}
-
+</div>
 		
 
 	</div>
-	<div class="mapa" id="mapa">
+	<div class="mapa col-lg-5" id="mapa">
 		<div id="map" style="height: 500px; width: 100%;"></div>
 		<button type="button" id="clear">borrar seleccion</button> 
 	</div>
