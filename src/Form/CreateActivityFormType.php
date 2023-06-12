@@ -60,22 +60,22 @@ class CreateActivityFormType extends AbstractType
                 ],
                 
             ])
-            // ->add('start_coord', TextType::class, [
-            //     'label' => 'Coordinadas iniciales',
-            //     'required' => false,
-            //     'attr' => [
-            //         'readonly' => true,
-            //     ],
+            ->add('start_coord', TextType::class, [
+                'label' => 'Coordinadas iniciales',
+                'required' => false,
+                'attr' => [
+                    'readonly' => true,
+                ],
                
-            // ])
-            // ->add('end_coord', TextType::class, [
-            //     'label' => 'Coordinadas finales',
-            //     'required' => false,
-            //     'attr' => [
-            //         'readonly' => true,
-            //     ],
+            ])
+            ->add('end_coord', TextType::class, [
+                'label' => 'Coordinadas finales',
+                'required' => false,
+                'attr' => [
+                    'readonly' => true,
+                ],
                 
-            // ])
+            ])
             ->add('price', NumberType::class, [
                 'label' => 'Precio/persona*',
                 'required' => true,
@@ -112,27 +112,27 @@ class CreateActivityFormType extends AbstractType
                     'Barcelona' => 'Barcelona',
                     'Sevilla' => 'Sevilla',
                 ],
+            ])
+            ->add('company_name', TextType::class, [
+                'label' => 'Nombre de empresa',
+                'required' => true,
+                'attr' => [
+                    'readonly' => true,
+                ],
+            ])
+            ->add('company_website', TextType::class, [
+                'label' => 'Página web',
+                'required' => true,
+                'attr' => [
+                    'readonly' => true,
+                ],
+                'constraints' => [
+                    new Regex([
+                        'pattern' => '/^.+\.(com|es|net)$/i',
+                        'message' => 'La página web debe terminar en .com, .es o .net',
+                    ]),
+                ],
             ]);
-            // ->add('company_name', TextType::class, [
-            //     'label' => 'Nombre de empresa',
-            //     'required' => true,
-            //     'attr' => [
-            //         'readonly' => true,
-            //     ],
-            // ])
-            // ->add('company_website', TextType::class, [
-            //     'label' => 'Página web',
-            //     'required' => true,
-            //     'attr' => [
-            //         'readonly' => true,
-            //     ],
-            //     'constraints' => [
-            //         new Regex([
-            //             'pattern' => '/^.+\.(com|es|net)$/i',
-            //             'message' => 'La página web debe terminar en .com, .es o .net',
-            //         ]),
-            //     ],
-            // ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
