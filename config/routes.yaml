@@ -28,7 +28,7 @@ all_activities:
     path: /all_activities
     controller: App\Controller\UserController::allActivities
 show_activity:
-    path: /profile/show_activity/{id}
+    path: /show_activity/{id}
     controller: App\Controller\UserController::showActivity
 join_activity:
     path: /profile/join_activity/{idActivity}/{tickets_number}/{nameActivity}
@@ -43,6 +43,12 @@ show_joined_activity:
 admin_dashboard:
     path: /admin/admin_dashboard
     controller: App\Controller\AdminController::adminDashboard
+edit_admin_details:
+    path: /edit_admin_details/
+    controller: App\Controller\UserController::editAdminDetails
+edit_user_details:
+    path: /edit_user_details/
+    controller: App\Controller\UserController::editUserDetails
 show_admin_activities:
     path: /admin/show_admin_activities
     controller: App\Controller\AdminController::showAdminActivities

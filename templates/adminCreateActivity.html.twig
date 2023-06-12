@@ -31,15 +31,15 @@ continuacion de la lista de actividades, pero al hacerlo solo extiende de base.h
 		{{ form_row(form.tickets) }}
 		{{ form_row(form.start_ubication) }}
 		{{ form_row(form.end_ubication) }}
-		{{ form_row(form.start_coord) }}
-		{{ form_row(form.end_coord) }}
+		{# {{ form_row(form.start_coord) }} #}
+		{# {{ form_row(form.end_coord) }} #}
 		{{ form_row(form.price) }}
 		{{ form_row(form.image) }}
 		{{ form_row(form.date) }}
 		{{ form_row(form.city) }}
-		{{ form_row(form.company_name, {'value': app.user.companyname}) }}
+		{# {{ form_row(form.company_name, {'value': app.user.companyname}) }} #}
 
-		{{ form_row(form.company_website, {'value': app.user.companywebsite}) }}
+		{# {{ form_row(form.company_website, {'value': app.user.companywebsite}) }} #}
 
 		<button class="fb" type="  submit">Guardar</button>
 		{{ form_end(form) }}
