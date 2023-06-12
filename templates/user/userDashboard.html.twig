@@ -36,12 +36,16 @@
 {% endblock %} #}
 
 {% block body %}
+<section class="s-profile col-lg-9 mr-auto ml-auto ">
+	<div class="p">
+		<h2 class="p-title">
+			<div class="punto"></div>Tus datos personales</h2>
+	</div>
 
+	<div class="profile ">
 
-		<div class="p-img col-lg-3">
-			<img class=" w-100 " src={{asset("assets/user.png")}} alt="Imagen icono de usuario ">
-		</div>
-		<div class="p-data col-lg-9">
+		
+		<div class="p-data col-lg-12 mr-auto ml-auto">
 			<h3>Name</h3>
 			<p>{{ app.user.username }}</p>
 			<h3>Apellidos</h3>
@@ -49,12 +53,17 @@
 			<h3>Telefono</h3>
 			<p>{{ app.user.tel }}</p>
 			<h3>Email</h3>
-			{{ app.user.email }}
+			<p>{{ app.user.email }}</p>
+			
+			
+
+
 			<div class="p-btn">
 				<button class="p-button">
 					<a href="{{ path('edit_admin_details') }}">Editar Perfil</a>
 				</button>
 			</div>
+		</div>
 	</div>
 </section>
 <div class="act_cr">
