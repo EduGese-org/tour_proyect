@@ -20,11 +20,8 @@ continuacion de la lista de actividades, pero al hacerlo solo extiende de base.h
 {% endblock %} #}
 {% block body %}
 
-<section class="mapa1">
-	<div class="mapa col-lg-7 mr-7 ml-auto col-md-12">
-	
-	<div class=" frm col-lg-9 ml-auto">
-	<h1 class="cf-titulo">Crear Nueva Actividad</h1>
+
+	<div class="mapa">
 		{{ form_start(form) }}
 		{{ form_row(form.activity_name) }}
 		{{ form_row(form.description) }}
