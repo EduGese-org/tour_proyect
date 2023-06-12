@@ -114,11 +114,12 @@ label {
   border: none;
   border-radius: 2em;
   font-weight: bolder;
+  color: #7AB800;
 }
 
 .navbar .boton-detalles {
   background-color: #7AB800;
-  color: #C5EB87;
+  color: #343A40;
   font-weight: bolder;
   border: none;
   border-radius: 2em;
@@ -627,7 +628,10 @@ form button[type="submit"] {
   object-fit: cover;
 }
 
-
+/*  Editar Formulario  */
+.e-frm form{
+  background-color: #343A40;
+}
 /* User y Admin Dashboard */
 
 .s-profile {
@@ -640,7 +644,7 @@ form button[type="submit"] {
   padding-top: 2em;
 }
 
-.profile {
+.profile,.edits {
   display: flex;
   justify-content: center;
   padding: 3em;
@@ -656,11 +660,11 @@ form button[type="submit"] {
  color: blue;
 }
 
-.p-data h3 {
+.p-data h3,label {
   font-weight: bold;
 }
 
-.p-data p {
+.p-data p,input {
   color: rgb(94, 90, 90);
 }
 
