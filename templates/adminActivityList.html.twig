@@ -35,14 +35,17 @@
 
 {% block body %}
  {% for flashMessage in app.flashes('delete') %}
-				{{ flashMessage}}
+				<span style="color: green; font-weight: bold;">{{ flashMessage }}</span>
+			{% endfor %}
+{% for flashMessage in app.flashes('create') %}
+				<span style="color: green; font-weight: bold;">{{ flashMessage }}</span>
 			{% endfor %}
 	{% set localDatetime = date('now', 'Europe/Madrid') %}
 	<h1 tabindex="0" class="my-4">Tus actividades creadas</h1>
 	<div class="container-activities py-5 col-10 my-5">
     <br>
    
-    {# {% for activity in app.user.getActivities() %} #}
+  
 		{% set sortedActivities = app.user.getActivities()|sort((a, b) => a.getDate() <=> b.getDate()) %}
         {% for activity in sortedActivities|reverse %}  
                 <div class="comentario col-10 d-flex flex-wrap">
